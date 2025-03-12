@@ -19,3 +19,4 @@ class MenuState(Enum):
     MENU_ABOUT = "menu_about"
     MENU_NEW_GAME = "menu_new_game"
     MENU_LOAD_GAME = "menu_load_game"
+    MENU_QUIT_GAME = "menu_quit_game"

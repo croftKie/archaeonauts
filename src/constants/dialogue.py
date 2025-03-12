@@ -22,10 +22,10 @@ menu_dialogue = {
         "Configuring your equipment... the ruins await your discovery.",
     ],
     MenuState.MENU_LOAD_GAME: [
-        "Reactivating previous mission... restoring your drone fleet.",
-        "Retrieving last expedition logs... recalibrating for the next dive.",
-        "Re-engaging the ship's systems... continuing your legacy.",
-        "Reactivating old data... new ruins detected nearby.",
-        "Syncing with last successful dive... ready to push deeper.",
+        "No previous save found...",
+        "Please start a new game."
+    ],
+    MenuState.MENU_QUIT_GAME: [
+        "Closing terminal...",
     ]
 }

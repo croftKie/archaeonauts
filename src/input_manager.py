@@ -12,7 +12,7 @@ class InputManager():
 
     def prompt_list_input(self):
         questions = []
-        if self.GM.current_state == State.MENU and self.GM.current_sub_state == MenuState.MENU_LOAD:
+        if self.GM.current_state == State.MENU:
             questions.append(input_content[MenuState.MENU_LOAD]["intro_menu"])
         
 
