@@ -79,7 +79,13 @@ class OutputManager():
     ## In Game Outputs
     
     def output_map(self):
-        return 
+        mm = self.gm.map_manager
+        for i, row in enumerate(mm.gen_map):
+            self.console.print("".join(row))
+            if len(mm.gen_map) - 1 == i:
+                self.console.print("")
+            else:
+                self.console.print(mm.connection_line)
     
 
     ## Utilities

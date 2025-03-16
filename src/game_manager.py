@@ -1,11 +1,12 @@
 from src.input_manager import InputManager
 from src.constants.states import MenuState, PuzzleState, State
 from src.output_manager import OutputManager
+from src.map_manager import MapManager
 
 
 class GameManager():
     def __init__(self):
-        self.map_manager = None
+        self.map_manager = MapManager(self)
         self.player = None
         self.data_manager = None
         self.input_manager = InputManager(self)
@@ -28,8 +29,10 @@ class GameManager():
         while not self.isPlaying:
             answer = self.input_manager.prompt_list_input()
             if answer["menu"] == "Start New Game":
-                self.__start_new_game()
+                # self.__start_new_game()
                 self.isPlaying = True
+                self.map_manager.generate_map()
+                self.output_manager.output_map()
 
             if answer["menu"] == "About Game":
                 self.__about_game()
