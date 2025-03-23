@@ -17,12 +17,12 @@ class OutputManager():
     ##
     ## Menu Outputs
     def output_menu_dialogue(self):
-        if self.gm.current_state == State.MENU:
-            for idx, line in enumerate(menu_dialogue[self.gm.current_sub_state]):
+        if self.gm.state_manager.current_state == State.MENU:
+            for idx, line in enumerate(menu_dialogue[self.gm.state_manager.current_sub_state]):
                 self.console.print(line, style = menu_styles[MenuState.MENU_LOAD][idx])
 
     def output_start_game_dialogue(self):
-        if self.gm.current_state == State.MENU:
+        if self.gm.state_manager.current_state == State.MENU:
 
             previous_idx = [];
 
@@ -40,14 +40,14 @@ class OutputManager():
             return True
                 
     def output_start_game_lore(self):
-        if self.gm.current_state == State.MENU:
+        if self.gm.state_manager.current_state == State.MENU:
             for idx, line in enumerate(menu_dialogue[MenuState.MENU_ABOUT]):
                 self.__type_output(line, menu_styles[MenuState.MENU_ABOUT][idx], interval=0.05)
                 self.console.print("\n")
                 time.sleep(3)
 
     def output_load_game_dialogue(self):
-        if self.gm.current_state == State.MENU:
+        if self.gm.state_manager.current_state == State.MENU:
             title = generate_title_art("Loading Save File")
             self.console.print(title)
             for idx, line in enumerate(menu_dialogue[MenuState.MENU_LOAD_GAME]):
@@ -56,7 +56,7 @@ class OutputManager():
                 time.sleep(3)
 
     def output_about_menu_lore(self):
-        if self.gm.current_state == State.MENU:
+        if self.gm.state_manager.current_state == State.MENU:
             title = generate_title_art("About Archeonauts")
             self.console.print(title)
             for idx, line in enumerate(menu_dialogue[MenuState.MENU_ABOUT]):
@@ -65,7 +65,7 @@ class OutputManager():
                 time.sleep(3)
     
     def output_quit_game_dialogue(self):
-        if self.gm.current_state == State.MENU:
+        if self.gm.state_manager.current_state == State.MENU:
             title = generate_title_art("Returning to Earth")
             self.console.print(title)
             for idx, line in enumerate(menu_dialogue[MenuState.MENU_QUIT_GAME]):
@@ -78,15 +78,11 @@ class OutputManager():
     ##
     ## In Game Outputs
     
-    def output_map(self):
-        mm = self.gm.map_manager
-        for i, row in enumerate(mm.gen_map):
-            self.console.print("".join(row))
-            if len(mm.gen_map) - 1 == i:
-                self.console.print("")
-            else:
-                self.console.print(mm.connection_line)
+    def output_help_text(self):
+        self.console.print("THIS IS THE HELP MENU")
     
+    def output_unknown_phrase(self):
+        self.console.print("\[digOS]:: Sorry, I don't recognise that command, try again please.")
 
     ## Utilities
     def __spawn_spinner(self, dialogue, spinner, spinner_style, spinner_speed, spinner_duration):
